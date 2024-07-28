@@ -87,9 +87,12 @@ void loop() {
   Serial.println(((epoch % 3600L) / 600));
   Serial.println(((epoch % 3600L) / 60) % 10);
 
+  xy5.clear();
   xy5.beginText(0, 0, 1, 1, 1);
   xy5.text(":", 11, 0);
-  xy5.text(String((epoch % 86400L) / 36000), 1, 0);
+  if ((epoch % 86400L) / 36000) {
+    xy5.text(String((epoch % 86400L) / 36000), 1, 0);
+  }
   xy5.text(String(((epoch % 86400L) / 3600) % 10), 7, 0);
   xy5.text(String((epoch % 3600L) / 600), 16, 0);
   xy5.text(String(((epoch % 3600L) / 60) % 10), 22, 0);
